@@ -1,11 +1,11 @@
-package com.example.springbootoncractjetty;
+package com.example.springbootoncracjetty;
 
 import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootOnCractJettyApplicationTests {
+class SpringBootOnCracJettyApplicationTests {
 
     @Test
     void contextLoads() {
