@@ -22,10 +22,21 @@ public class SpringBootOnCracJettyApplication {
 @Component
 class CracConfig implements Resource {
     private final ConfigurableApplicationContext ctx;
+    private Thread preventExitThread;
 
     CracConfig(ConfigurableApplicationContext ctx) {
         this.ctx = ctx;
         Core.getGlobalContext().register(this);
+
+        preventExitThread = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1_000_000);
+                } catch (InterruptedException e) {
+                }
+            }
+        });
+        preventExitThread.start();
     }
 
     @Override public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
